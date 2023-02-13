@@ -17,8 +17,8 @@ import {
 } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
-import { configure, getDefaultNormalizer } from '@testing-library/react';
-import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
+// import { configure, getDefaultNormalizer } from '@testing-library/react';
+// import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 
 const persistConfig = { key: "root", storage, version: 1};
 const persistedReducer = persistReducer(persistConfig, authReducer);
@@ -28,9 +28,9 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
-    })
-})
+      },
+    }),
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
