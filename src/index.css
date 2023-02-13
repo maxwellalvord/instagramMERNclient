@@ -12,17 +12,17 @@ body,
 
 /* ========================= Media Queries (Medium Devices) ================== */
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .app {
     
   }
 
-}
+} */
 
 /* ============================= Media Queries (Small Devices) ====================== */
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .app {
     
   }
-}
+} */
