@@ -6,7 +6,7 @@ import {
   Typography,
   Select,
   MenuItem,
-  FormCOntrol,
+  FormControl,
   useThem,
   useMediaQuery
 } from "@mui/material";
@@ -24,9 +24,10 @@ import { useDispatch, userDispatcher, useSelector } from "react-redux";
 import { setMode, setLogout } from "state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
+import { width } from "@mui/system";
 
 const Navbar = () => {
-  const [isMobileMenuToggled, setisMobileMenuToggled] = useState(false);
+  const [isMobileMenuToggled,setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -69,6 +70,53 @@ const Navbar = () => {
       </FlexBetween>
 
       {/* DESKTOP NAV */}
+      {isNonMobileScreens ? (
+        <FlexBetween>
+          <IconButton onClick={() => dispatch(setMode())}>
+            {theme.palette.mode === "dark" ? (
+              <DarkMode sx={{ fontSize: "25px"}} />
+            ) : (
+              <LightMode sx={{ color: dark, fontSize: "25px"}} />
+            )}
+          </IconButton>
+          <Message sx={{ fontSize: "25px"}} />
+          <Notifications sx={{ fontSize: "25px"}} />
+          <Help sx={{ fontSize: "25px"}} />
+          <FormControl variant="standard" value={fullName}>
+            <Select 
+            value={fullName}
+            sx={{
+              backgroundColor: neutralLight,
+              width: "150px",
+              borderRadius: "0.25rem",
+              p: "0.25rem 1rem",
+              "& .MuiSvgIcon-root": {
+                pr: "0.25rem",
+                width: "3rem"
+              },
+              "& .MuiSelect-select:focus" : {
+                backgroundColor: neutralLight
+              }
+            }}
+            input={<InputBase/>}
+            >
+
+              <MenuItem value={fullName}>
+                <Typography>{fullName}</Typography>
+              </MenuItem>
+              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+            </Select>
+          </FormControl>
+        </FlexBetween>
+      ) : (
+        <IconButton
+        onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
+        >
+          <Menu/>
+        </IconButton>
+      )}
+
+      {/* MOBILE NAV */}
       
     </FlexBetween>
   )
