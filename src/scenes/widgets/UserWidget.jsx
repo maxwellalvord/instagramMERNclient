@@ -1,8 +1,7 @@
 import {
-  manageAccountsOutlined,
   EditOutlined,
   LocationOnOutlined,
-  workOutlineOutlined,
+  WorkOutlineOutlined,
   ManageAccountsOutlined
 } from "@mui/icons-material";
 import {
@@ -30,7 +29,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.neutral.main
 
   const getUser = async () => {
-    const response = await fetch(`http:localhost:3001/users/${userId}` , {
+    const response = await fetch(`http://localhost:3001/users/${userId}` , {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` }
     });
@@ -83,9 +82,10 @@ const UserWidget = ({ userId, picturePath }) => {
             </Typography>
             <Typography color="medium">{friends.length} friends</Typography>
           </Box>
-          <ManageAccountsOutlined />
+          
         </FlexBetween>
-
+        <ManageAccountsOutlined />
+        </FlexBetween>
         <Divider />
 
         {/* SECOND ROW */}
@@ -104,10 +104,12 @@ const UserWidget = ({ userId, picturePath }) => {
           alignItems="center"
           gap="1rem"
           >
-            <workOutlineOutlined fontSize="large" sx={{ color: main}} />
+            <WorkOutlineOutlined fontSize="large" sx={{ color: main}} />
             <Typography color={medium}>{occupation}</Typography>
           </Box>
         </Box>
+
+        <Divider />
 
         {/* THIRD ROW */}
         <Box p="1rem 0">
@@ -121,6 +123,8 @@ const UserWidget = ({ userId, picturePath }) => {
           </FlexBetween>
         </Box>
 
+        <Divider />
+
         {/* FOURTH ROW */}
         <Box p="1rem 0">
           <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
@@ -129,7 +133,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
           <FlexBetween gap="1rem" mb="0.5rem">
             <FlexBetween gap="1rem">
-              <img src="../assests/twitter.png" alt="twitter" />
+              <img src="../assets/twitter.png" alt="twitter" />
               <Box>
                 <Typography color={main} fontWeight="500">
                   Twitter
@@ -142,7 +146,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
           <FlexBetween gap="1rem">
             <FlexBetween gap="1rem">
-              <img src="../assests/linkedin.png" alt="linkedin" />
+              <img src="../assets/linkedin.png" alt="linkedin" />
               <Box>
                 <Typography color={main} fontWeight="500">
                   LinkedIn
@@ -153,7 +157,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <EditOutlined sx={{ color: main}} />
           </FlexBetween>
         </Box>
-      </FlexBetween>
+      
     </WidgetWrapper>
   );
 };
