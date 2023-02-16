@@ -1,4 +1,4 @@
-/* eslint no-restricted-globals: 1 */
+
 
 import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
@@ -8,7 +8,7 @@ import { setFriends } from "state";
 import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
 
-const Friend = ({ friendId, nmae, subtitle, userPicturePath }) => {
+const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { _id } = useSelector((state) => state.user);
@@ -59,7 +59,6 @@ const Friend = ({ friendId, nmae, subtitle, userPicturePath }) => {
               },
             }}
           >
-            {/* name is depreciated */}
             {name}
           </Typography>
           <Typography color={medium} fontSize="0.75rem">
